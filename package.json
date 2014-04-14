@@ -1,0 +1,20 @@
+{
+    "name": "utilx",
+    "version": "0.0.1",
+    "description": "Some tiny tool functions.",
+    "homepage": "https://github.com/fool2fish/utilx",
+    "keywords": [
+        "tool functions"
+    ],
+    "author": "fool2fish <fool2fish@gmail.com>",
+    "devDependencies": {
+        "commander": "1.2.0",
+        "mocha": "1.12.0",
+        "expect.js": "0.2.0",
+        "sinon": "1.7.3"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/fool2fish/utilx.git"
+    }
+}

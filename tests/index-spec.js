@@ -27,23 +27,23 @@ describe('utilx', function(){
         })
     })
 
-    it('getCfg', function() {
+    it('cGetConf', function() {
         commander
             .description('a commander')
             .option('--nick [s]', 'a name')
             .option('--favorite [s]', 'a favorite')
             .parse(['node', 'scriptpath', '--nick=fool2fish', '--favorite=imax'])
-        var rt = common.getCfg(commander)
+        var rt = common.cGetConf(commander)
         expect(Object.keys(rt).length).to.be(2)
         expect(rt.nick).to.be('fool2fish')
         expect(rt.favorite).to.be('imax')
     })
 
-    describe('readCfgFile', function() {
+    describe('readConf', function() {
 
         it('pass a not exist file and return an empty plain object', function() {
             var p = path.join(__dirname, 'path', 'to', 'not-existed-file.json')
-            var rt = common.readCfgFile(p)
+            var rt = common.readConf(p)
             expect(Object.keys(rt).length).to.be(0)
             expect(JSON.stringify(rt)).to.be('{}')
         })
@@ -52,7 +52,7 @@ describe('utilx', function(){
             var p = path.join(__dirname, 'not-proper-file.txt')
             fs.writeFileSync(p, 'some text')
 
-            var rt = common.readCfgFile(p)
+            var rt = common.readConf(p)
             expect(Object.keys(rt).length).to.be(0)
             expect(JSON.stringify(rt)).to.be('{}')
 
@@ -63,7 +63,7 @@ describe('utilx', function(){
             var p = path.join(__dirname, 'proper-file.json')
             fs.writeFileSync(p, '{"nick": "fool2fish", "job": "web developer"}')
 
-            var rt = common.readCfgFile(p)
+            var rt = common.readConf(p)
             expect(Object.keys(rt).length).to.be(2)
             expect(rt.nick).to.be('fool2fish')
             expect(rt.job).to.be('web developer')
@@ -73,16 +73,16 @@ describe('utilx', function(){
 
     })
 
-    describe('writeCfgFile', function() {
+    describe('writeConf', function() {
 
         it('create it first if the file not exist', function() {
             var p = path.join(__dirname, 'path', 'to', 'not-existed-config.json')
-            common.writeCfgFile(p, {nick: 'fool2fish', blog: 'fool2fish.cn'})
+            common.writeConf(p, {nick: 'fool2fish', blog: 'fool2fish.cn'})
 
-            var cfg = require(p)
-            expect(Object.keys(cfg).length).to.be(2)
-            expect(cfg.nick).to.be('fool2fish')
-            expect(cfg.blog).to.be('fool2fish.cn')
+            var conf = require(p)
+            expect(Object.keys(conf).length).to.be(2)
+            expect(conf.nick).to.be('fool2fish')
+            expect(conf.blog).to.be('fool2fish.cn')
 
             fs.unlinkSync(p)
             fs.rmdirSync(path.join(__dirname, 'path', 'to'))
@@ -93,13 +93,13 @@ describe('utilx', function(){
             var p = path.join(__dirname, 'existed-config.json')
             fs.writeFileSync(p, '{"nick": "fool2fish", "job": "web developer"}')
 
-            common.writeCfgFile(p, {nick: 'fool2fish', twitter: 'fool2fish'})
+            common.writeConf(p, {nick: 'fool2fish', twitter: 'fool2fish'})
 
-            var cfg = require(p)
-            expect(Object.keys(cfg).length).to.be(2)
-            expect(cfg.nick).to.be('fool2fish')
-            expect(cfg.twitter).to.be('fool2fish')
-            expect(cfg.blog).to.be(undefined)
+            var conf = require(p)
+            expect(Object.keys(conf).length).to.be(2)
+            expect(conf.nick).to.be('fool2fish')
+            expect(conf.twitter).to.be('fool2fish')
+            expect(conf.blog).to.be(undefined)
 
             fs.unlinkSync(p)
         })

@@ -39,11 +39,11 @@ describe('utilx', function(){
         expect(rt.favorite).to.be('imax')
     })
 
-    describe('readCfg', function() {
+    describe('readJSON', function() {
 
         it('pass a not exist file and return an empty plain object', function() {
             var p = path.join(__dirname, 'path', 'to', 'not-existed-file.json')
-            var rt = common.readCfg(p)
+            var rt = common.readJSON(p)
             expect(Object.keys(rt).length).to.be(0)
             expect(JSON.stringify(rt)).to.be('{}')
         })
@@ -52,7 +52,7 @@ describe('utilx', function(){
             var p = path.join(__dirname, 'not-proper-file.txt')
             fs.writeFileSync(p, 'some text')
 
-            var rt = common.readCfg(p)
+            var rt = common.readJSON(p)
             expect(Object.keys(rt).length).to.be(0)
             expect(JSON.stringify(rt)).to.be('{}')
 
@@ -63,7 +63,7 @@ describe('utilx', function(){
             var p = path.join(__dirname, 'proper-file.json')
             fs.writeFileSync(p, '{"nick": "fool2fish", "job": "web developer"}')
 
-            var rt = common.readCfg(p)
+            var rt = common.readJSON(p)
             expect(Object.keys(rt).length).to.be(2)
             expect(rt.nick).to.be('fool2fish')
             expect(rt.job).to.be('web developer')
@@ -73,11 +73,11 @@ describe('utilx', function(){
 
     })
 
-    describe('writeCfg', function() {
+    describe('writeJSON', function() {
 
         it('create it first if the file not exist', function() {
             var p = path.join(__dirname, 'path', 'to', 'not-existed-config.json')
-            common.writeCfg(p, {nick: 'fool2fish', blog: 'fool2fish.cn'})
+            common.writeJSON(p, {nick: 'fool2fish', blog: 'fool2fish.cn'})
 
             var cfg = require(p)
             expect(Object.keys(cfg).length).to.be(2)
@@ -93,7 +93,7 @@ describe('utilx', function(){
             var p = path.join(__dirname, 'existed-config.json')
             fs.writeFileSync(p, '{"nick": "fool2fish", "job": "web developer"}')
 
-            common.writeCfg(p, {nick: 'fool2fish', twitter: 'fool2fish'})
+            common.writeJSON(p, {nick: 'fool2fish', twitter: 'fool2fish'})
 
             var cfg = require(p)
             expect(Object.keys(cfg).length).to.be(2)

@@ -8,7 +8,8 @@
   ],
   "author": "fool2fish <fool2fish@gmail.com>",
   "dependencies": {
-    "colorful": "2.1.0"
+    "colorful": "2.1.0",
+    "iconv-lite": "0.2.11"
   },
   "devDependencies": {
     "commander": "1.2.0",

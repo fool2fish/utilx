@@ -1,6 +1,6 @@
 {
   "name": "utilx",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Some tiny tool functions.",
   "homepage": "https://github.com/fool2fish/utilx",
   "keywords": [
@@ -8,14 +8,14 @@
   ],
   "author": "fool2fish <fool2fish@gmail.com>",
   "dependencies": {
-    "colorful": "2.1.0",
-    "iconv-lite": "0.2.11"
+    "colorful": "~2.1.0",
+    "iconv-lite": "~0.4.4"
   },
   "devDependencies": {
-    "commander": "1.2.0",
-    "mocha": "1.12.0",
-    "expect.js": "0.2.0",
-    "sinon": "1.7.3"
+    "commander": "~2.3.0",
+    "mocha": "~1.21.4",
+    "expect.js": "~0.3.1",
+    "sinon": "~1.10.3"
   },
   "repository": {
     "type": "git",

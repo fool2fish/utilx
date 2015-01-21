@@ -218,7 +218,7 @@ describe('utilx', function(){
     }
   })
 
-  it('cGetCfg', function() {
+  it.skip('cGetCfg', function() {
     commander
       .description('a commander')
       .option('--nick [s]', 'a name')

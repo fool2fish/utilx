@@ -56,7 +56,7 @@ This function will return an empty JSON object if any error occurs.
 
 ### writeJSON(p, data, space = 0)
 
-### noCacheRequire(p)
+### noCacheRequire(fullPath)
 
 ### mix(target, src, overwrite = false)
 

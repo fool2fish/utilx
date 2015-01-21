@@ -40,7 +40,7 @@ unCamelcase('isArray')  => 'is-array'
 
 ### isExistedDir(p)
 
-### readFile(p, encoding)
+### readFile(p, encoding = 'utf8')
 
 ### writeFile(p, data)
 
